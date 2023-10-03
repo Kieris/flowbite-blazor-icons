@@ -183,7 +183,7 @@ public class SolidIconNames
     public static string LinkedinSolid => "linkedin";
     public static string LinkSolid => "link";
     public static string ListMusicSolid => "list-music";
-    public static string ListOrderedSolid => "list-ordored";
+    public static string ListOrderedSolid => "list-ordered";
     public static string ListSolid => "list";
     public static string LockOpenSolid => "lock-open";
     public static string LockSolid => "lock";
