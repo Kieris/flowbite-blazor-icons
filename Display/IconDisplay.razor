@@ -1,0 +1,55 @@
+@using System.Reflection
+
+<h2 class="mt-8 font-semibold text-xl">Solid</h2>
+<div class="flex flex-wrap p-4">
+@foreach (var p in solidList)
+{
+    <div class="m-1 p-4 w-32 text-gray-700 stroke-gray-900 dark:text-white dark:stroke-white rounded-xl border border-gray-500 dark:border-gray-200">
+        <div class="text-xs flex justify-center mb-2">@p</div>
+        <div class="flex justify-center">
+            <FlowbiteIcon Type="Solid" Name="@p" class="w-4 w-4"></FlowbiteIcon>
+        </div>
+    </div>
+}
+</div>
+<h2 class="m-4 font-semibold text-xl">Outline</h2>
+<div class="flex flex-wrap p-4">
+    @foreach (var p in outlineList)
+    {
+        <div class="m-1 p-4 w-32 text-gray-700 stroke-gray-900 dark:text-white dark:stroke-white rounded-xl border border-gray-500 dark:border-gray-200">
+            <div class="text-xs flex justify-center mb-2">@p</div>
+            <div class="flex justify-center">
+                <FlowbiteIcon Type="Outline" Name="@p" class="w-4 w-4"></FlowbiteIcon>
+            </div>
+        </div>
+    }
+</div>
+
+    
+@code {
+    private SolidIconNames _iconsolid = new();
+    private OutlineIconNames _iconoutline = new();
+    private List<string> solidList = new(); 
+    private List<string> outlineList = new(); 
+
+    protected override void OnInitialized()
+    {
+        foreach (PropertyInfo prop in _iconsolid.GetType().GetProperties())
+        {
+            var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+            if (type == typeof (string))
+            {
+                solidList.Add(prop.GetValue(_iconsolid, null).ToString());
+            }
+        }
+        
+        foreach (PropertyInfo prop in _iconoutline.GetType().GetProperties())
+        {
+            var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+            if (type == typeof (string))
+            {
+                outlineList.Add(prop.GetValue(_iconoutline, null).ToString());
+            }
+        }
+    }
+}

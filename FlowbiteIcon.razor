@@ -1,0 +1,48 @@
+@inherits IconBase
+
+<DynamicComponent Type="_razorComponentType" Parameters="AdditionalAttributes"></DynamicComponent>
+
+@code {
+    /// <summary>
+    /// The name of the icon
+    /// </summary>
+    [Parameter]
+    public string Name { get; set; } = "HomeSolid";
+    
+    /// <summary>
+    /// The type of icon
+    /// </summary>
+    [Parameter]
+    public string Type { get; set; } = "Solid";
+    
+    private string _lastType = string.Empty;
+    
+    private Type _razorComponentType = typeof(Solid.HomeSolid);
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        
+        //remove hyphens and spaces
+        var name = Name.Replace("-", "").Replace(" ", "");
+        
+        //add icon suffix, if not included
+        if (!name.EndsWith(Type))
+        {
+            name = $"{name}{Type}";
+        }
+
+        //check to see if the icon parameters have changed
+        if (_razorComponentType is null ||
+            _razorComponentType.Name.ToLower() != name.ToLower() || _lastType != Type)
+        {
+            //find icon based on name and type
+            _razorComponentType = System.Type.GetType($"Flowbite.Icons.{Type}.{name}", false, true)!;
+            _lastType = Type;
+        }
+
+        if (_razorComponentType is null)
+            throw new Exception($"FlowbiteIcon '{Type}.{name}' not found");
+    }
+
+}
