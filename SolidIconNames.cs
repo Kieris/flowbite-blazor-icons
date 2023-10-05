@@ -5,6 +5,7 @@ public class SolidIconNames
     public static string AdjustmentsHorizontalSolid => "adjustments-horizontal";
     public static string AdjustmentsVerticalSolid => "adjustments-vertical";
     public static string AddressBookSolid => "address-book";
+    public static string AddressCardSolid => "address-card";
     public static string AngleDownSolid => "angle-down";
     public static string AngleLeftSolid => "angle-left";
     public static string AngleRightSolid => "angle-right";

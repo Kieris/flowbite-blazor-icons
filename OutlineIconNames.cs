@@ -113,7 +113,7 @@ public class OutlineIconNames
     public static string ExpandOutline => "expand";
     public static string EyeOutline => "eye";
     public static string EyeSlashOutline => "eye-slash";
-    public static string FaceExplodeOutline => "face-explode";
+    public static string FaceMindBlownOutline => "face-mind-blown";
     public static string FaceGrinOutline => "face-grin";
     public static string FaceGrinStarsOutline => "face-grin-stars";
     public static string FaceLaughOutline => "face-laugh";
